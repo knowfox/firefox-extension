@@ -1,0 +1,27 @@
+{
+
+  "manifest_version": 2,
+  "name": "Knowfox",
+  "version": "0.1",
+
+  "description": "Save bookmarks to Knowfox",
+  "homepage_url": "https://github.com/knowfox/firefox-extension",
+
+  "icons": {
+    "48": "icons/knowfox-48.png",
+    "96": "icons/knowfox-96.png"
+  },
+
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "<all_urls>",
+    "cookies"
+  ],
+
+  "browser_action": {
+    "default_icon": "icons/knowfox-32.png",
+    "default_title": "Knowfox!",
+    "default_popup": "popup.html"
+  }
+}
