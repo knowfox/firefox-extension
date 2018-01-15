@@ -1,37 +1,29 @@
-function logTabs(tabs) {
-  for (let tab of tabs) {
-    // tab.url requires the `tabs` permission
-    console.log(tab.url, tab.title);
-  }
-}
+/**
+ * Knowfox Extension for Firefox - Personal Knowledge Management
+ * Copyright (C) 2018 Olav Schettler
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+const KNOWFOX = 'https://knowfox.com';
 
 function fetchForm(tabs) {
-  let url = 'http://knowfox.test/bookmark?url='
+  let url = KNOWFOX + '/bookmark?url='
       + encodeURIComponent(tabs[0].url)
       + '&title=' + encodeURIComponent(tabs[0].title);
 
   location.href = url;
   return;
-
-  browser.cookies.get({
-    url,
-    name: 'laravel_session'
-  })
-    .then((cookie) => {
-      console.log(url, cookie);
-      fetch(url, {
-          credentials: 'include',
-          headers: new Headers({
-            'Cookie': cookie
-          })
-        })
-        .then((response) => {
-          return response.text();
-        })
-        .then((html) => {
-          console.log(html);
-        });
-    });
 }
 
 function onError(error) {
